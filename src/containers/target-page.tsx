@@ -8,7 +8,7 @@ import Screenshot from "src/components/ScanSections/screenshot";
 import HeaderSecure from "src/components/ScanSections/header-secure";
 
 interface TargetPageProps {
-    clientId?: string;
+    clientId: string;
 };
 
 function TargetPage({clientId}: TargetPageProps) {
@@ -19,9 +19,7 @@ function TargetPage({clientId}: TargetPageProps) {
     const [clientStatus, setClientStatus] = React.useState<{ url: string, status: string, result: any} | null>(null);
 
     const isMounted = React.useRef(false);
-    if (!clientId) {
-        return null;
-    }
+
     const checkClientStatus = async (clientId: string) => {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/get-scan-status/${clientId}`);
         const result = await response.json() as { url: string, status: string, result: any} & { error?: string};
@@ -31,6 +29,7 @@ function TargetPage({clientId}: TargetPageProps) {
         }
         return result;
     }
+
     useLayoutEffect(() => {
         setClient(clientId);
         if (!isMounted.current) {
@@ -53,6 +52,7 @@ function TargetPage({clientId}: TargetPageProps) {
         }
         isMounted.current = true;
     }, [clientId]);
+
     return (
         <div className={"w-full h-full flex flex-col gap-10 pb-24"}>
             <div className={'w-full flex flex-col gap-5'}>

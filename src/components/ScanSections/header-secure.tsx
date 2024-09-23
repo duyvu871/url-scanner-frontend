@@ -7,9 +7,11 @@ import {clientIdAtom} from "src/states/target-page";
 import Markdown from "src/components/Markdown";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "src/components/ui/accordion";
 import RotateLoader from "src/components/Loader/spinner";
+import useUID from "src/hooks/useUID";
 
 function HeaderSecure() {
     const [clientId, ] = useAtom(clientIdAtom);
+    const [genID] = useUID();
 
     const [show, setShow] = React.useState(false);
     const [headers, setHeaders] = React.useState<GetHeadersResponse | null>(null);
@@ -72,7 +74,7 @@ function HeaderSecure() {
                 <div>
                     <Accordion type="single" collapsible className="w-full p-4">
                         {Object.keys(headerCheck?.results).map((header, index) => (
-                            <AccordionItem value={header} className={"border-zinc-800"}>
+                            <AccordionItem key={genID()} value={header} className={"border-zinc-800"}>
                                 <AccordionTrigger className={"capitalize font-semibold"}>{header}</AccordionTrigger>
                                 <AccordionContent>
                                     {headerCheck.results[header as keyof HeaderSecureCheck['results']]}

@@ -9,13 +9,14 @@ import RotateLoader from "src/components/Loader/spinner";
 
 function TechnologiesList() {
     const [technologies ,] = useAtom(technologiesAtom);
+    const [genID] = useUID();
+
     if (!technologies) {
         return null;
     }
     const resolveIconPath = (name: string) => {
         return ThirdPartyApi.wrappalyzerIcon + name;
     }
-    const [genID] = useUID();
 
     return (
         <div className={"flex flex-col bg-zinc-950 rounded-xl border border-zinc-700"}>
@@ -25,7 +26,7 @@ function TechnologiesList() {
                     <RotateLoader />
                 )}
                 {technologies.map((technology, index) => (
-                    <AccordionItem value={technology.name} className={"border-zinc-800"}>
+                    <AccordionItem key={genID()} value={technology.name} className={"border-zinc-800"}>
                         <AccordionTrigger>
                             <div className={"flex flex-col gap-2"}>
                                 <div className={"flex flex-row gap-2"}>
