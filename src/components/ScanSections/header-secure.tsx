@@ -18,7 +18,7 @@ function HeaderSecure() {
     const [headerCheck, setHeaderCheck] = React.useState<HeaderSecureCheck | null>(null);
     const toggleShow = () => setShow(!show);
     const fetchHeaders = async () => {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/get-headers`, {
+        const response = await fetch(`/api/v1/get-headers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ function HeaderSecure() {
         }
     }
     const fetchHeaderCheck = async () => {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/check-headers`, {
+        const response = await fetch(`/api/v1/check-headers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

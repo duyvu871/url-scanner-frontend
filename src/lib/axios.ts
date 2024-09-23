@@ -16,7 +16,7 @@ interface ApiV1 {
 // Fetch the API endpoint from environment variables
 // Using NEXT_PUBLIC_API_BASE_URL makes the endpoint available client-side
 // If not defined (e.g., running locally), defaults to 'http://localhost:3000'
-const API_ENDPOINT = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
+const API_ENDPOINT = ""//process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
 // Create the Axios instance with the base URL
 const api= axios.create({

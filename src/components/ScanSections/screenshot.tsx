@@ -10,7 +10,7 @@ function Screenshot() {
     const [clientStatus,] = useAtom(clientStatusAtom);
 
     const resolveScreenshotPath = (path: string) => {
-        return `${process.env.NEXT_PUBLIC_API_BASE_URL}/${path}`;
+        return `/api/image-proxy?url=${process.env.NEXT_PUBLIC_API_BASE_URL}/${path}`;
     }
 
     return (
