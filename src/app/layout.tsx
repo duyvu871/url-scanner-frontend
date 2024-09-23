@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import {ThemeProvider} from "src/layouts/global-theme";
+import {cn} from "src/utils/tailwind";
+import MainLayout from "src/layouts/main-layout";
+import AppProvider from "src/providers/app-provider";
+import Toast from "src/layouts/Toast";
+import FullscreenLoader from "src/layouts/fullscreen-loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +22,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn(inter.className, "dark:bg-zinc-950 bg-white")}>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            disableTransitionOnChange
+            enableSystem
+        >
+          <AppProvider>
+            <Toast>
+              <FullscreenLoader>
+                <MainLayout>
+                  {children}
+                </MainLayout>
+              </FullscreenLoader>
+            </Toast>
+          </AppProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
