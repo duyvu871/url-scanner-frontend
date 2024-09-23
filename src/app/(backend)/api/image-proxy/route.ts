@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
         return new Response(imageBuffer, {
             status: 200,
             headers: {
-                'Content-Type': contentType || 'image/jpeg',
+                'Content-Type': contentType || 'image/png',
                 'Cache-Control': `public, max-age=${oneDayInSeconds}, immutable`,
             },
         });
