@@ -21,7 +21,7 @@ function TargetPage({clientId}: TargetPageProps) {
     const isMounted = React.useRef(false);
 
     const checkClientStatus = async (clientId: string) => {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/get-scan-status/${clientId}`);
+        const response = await fetch(`/api/v1/get-scan-status/${clientId}`);
         const result = await response.json() as { url: string, status: string, result: any} & { error?: string};
         if (result && !result.error) {
             setClientStatus(result);
