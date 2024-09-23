@@ -26,7 +26,7 @@ function Screenshot() {
             </div>
             <div className={""}>
                 {!screenshot?.path && <RotateLoader />}
-                {screenshot?.path && (<Image loading={'lazy'} width={1200} height={1400} src={resolveScreenshotPath(screenshot.path)} alt={"Screenshot"}/>)}
+                {screenshot?.path && (<Image unoptimized loading={'lazy'} width={1200} height={1400} src={resolveScreenshotPath(screenshot.path)} alt={"Screenshot"}/>)}
             </div>
         </div>
     );
