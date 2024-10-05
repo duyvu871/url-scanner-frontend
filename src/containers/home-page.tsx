@@ -29,13 +29,13 @@ function HomePage() {
             console.log(error, data);
         });
         setFullScreenLoader(false);
-        if (response?.error) {
-            showError(response.error);
-        }
-        localStorage.setItem('clientId', response?.clientId || '');
-        console.log(response);
+        // if (response?.error) {
+        //     showError(response.error);
+        // }
+        // localStorage.setItem('clientId', response?.clientId || '');
+        // console.log(response);
         if (!response?.clientId) {
-            showError('Failed to initiate scan');
+            showError(`Failed to initiate scan, Reason: ${response?.error}`);
         } else {
             router.push('/target/' + response?.clientId);
         }
@@ -44,14 +44,14 @@ function HomePage() {
         showError(errors.url?.message || 'Invalid URL');
     }
     return (
-        <div className={"h-full w-full"}>
-            <div className="w-full flex flex-col justify-center items-start md:max-w-xs">
+        <div className={"h-full w-full flex flex-col items-center "}>
+            <div className="w-full flex flex-col justify-center items-start max-w-2xl">
                 <span className="flex flex-col gap-2">
-                    <p className={"text-3xl font-semibold"}>Run scans on your website or IP address</p>
-                    <p className={"text-xl text-zinc-500"}>Without the hassle</p>
+                    <p className={"text-3xl md:text-5xl font-semibold"}>Run scans on your website or IP address</p>
+                    <p className={"text-xl md:text-3xl text-zinc-500"}>Without the hassle</p>
                 </span>
                 <span className="py-2" />
-                <span className="text-sm text-zinc-500 dark:text-zinc-400 mb-2">
+                <span className="text-sm md:text-lg text-zinc-500 dark:text-zinc-400 mb-2">
                    Scan your website or IP address to detect vulnerabilities and security issues.
                 </span>
                 <div

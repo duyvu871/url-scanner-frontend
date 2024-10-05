@@ -11,6 +11,7 @@ interface ApiV1 {
     takeScreenshot: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void) => Promise<{path?: string;} & {error?: string} | undefined>;
     abortDirBuster: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void) => Promise<{message?: string;} & { error?: string} | undefined>;
     domainDirBuster: (clientId: string, callback?: (error: AxiosError|null, data: any) => void) => Promise<{clientId?: string;} & { error?: string} | undefined>;
+    getDNSInfo: (clientId: string, callback?: (error: AxiosError|null, data: any) => void) => Promise<{family: number, address: string} & { error?: string} | undefined>;
 }
 
 // Fetch the API endpoint from environment variables
@@ -41,7 +42,8 @@ const apiTemplate = async <T>(
         // @ts-ignore
     } catch (error: AxiosError | null) {
         if (callback) {
-            callback(error, undefined);
+            callback(error, error?.response?.data);
+            return error?.response;
         } else {
             throw error;
         }
@@ -66,7 +68,7 @@ api.v1 = {
             },
             callback
         );
-        console.log(response);
+        // console.log(response);
         return response?.data;
     },
     getTechnologies: async (clientId, callback?: (error: AxiosError|null, data: any) => void) => {
@@ -139,6 +141,24 @@ api.v1 = {
         );
         return response?.data;
     },
+    getDNSInfo: async (clientId, callback?: (error: AxiosError|null, data: any) => void) => {
+        const response = await apiTemplate<{family: number, address: string} & { error?: string} | undefined>(
+            api,
+            `/get-dns-info`,
+            {
+                clientId
+            },
+            { method: 'post',
+                configs: {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                },
+            },
+            callback
+        );
+        return response?.data;
+    }
 };
 
 export default api;

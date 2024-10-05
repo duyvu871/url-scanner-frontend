@@ -6,14 +6,19 @@ export type GetHeadersResponse = {
     }
 }
 
+export type ResponseHeaders = "checkHSTS"| "checkXFrameOptions"| "checkXContentTypeOptions"| "checkCSP"| "checkReferrerPolicy"| "checkXXSSProtection"| "checkSecureCookies";
+
 export type HeaderSecureCheck = {
-    results: {
-        checkHSTS?: string;
-        checkXFrameOptions?: string;
-        checkXContentTypeOptions?: string;
-        checkCSP?: string;
-        checkReferrerPolicy?: string;
-        checkXXSSProtection?: string;
-        checkSecureCookies?: string;
+    responseResults: {
+        [key in ResponseHeaders]: {
+            status: "missing"|"secure"|"insecure"|"present"|"error",
+            message: string
+            header: string | null
+        }
     }
+}
+
+export type GetDNSInfoResponse = {
+    family: number,
+    address: string,
 }
