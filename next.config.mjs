@@ -29,11 +29,11 @@ const nextConfig = {
         return [
             {
                 source: '/api/v1/:path*',
-                destination: 'https://14.224.188.206:4000/api/v1/:path*'//process.env.NODE_ENV === "development" ? 'http://localhost:4000/api/v1/:path*' : 'https://14.224.188.206:4000/api/v1/:path*',
+                destination: 'http://14.224.188.206:4000/api/v1/:path*'//process.env.NODE_ENV === "development" ? 'http://localhost:4000/api/v1/:path*' : 'https://14.224.188.206:4000/api/v1/:path*',
             },
             {
                 source: '/storages/:path*',
-                destination: 'https://14.224.188.206:4000/storages/:path*'//process.env.NODE_ENV === "development" ? 'http://localhost:4000/storages/:path*' : 'https://14.224.188.206:4000/storages/:path*',
+                destination: 'http://14.224.188.206:4000/storages/:path*'//process.env.NODE_ENV === "development" ? 'http://localhost:4000/storages/:path*' : 'https://14.224.188.206:4000/storages/:path*',
             }
         ];
     },
