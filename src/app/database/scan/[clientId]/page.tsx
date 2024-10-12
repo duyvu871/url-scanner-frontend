@@ -8,7 +8,7 @@ type Props = {
     };
 };
 
-export function Page(props: Props) {
+export default function Page(props: Props) {
     return (
        <DatabaseScanPage clientId={props.params.clientId} />
     );
