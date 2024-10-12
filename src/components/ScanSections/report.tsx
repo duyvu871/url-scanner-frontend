@@ -58,10 +58,10 @@ function Report() {
     const [genID] = useUID();
     const {getScore} = useScore({
         "F": [0, 0.5],
-        "E": [0.6, 1.2],
-        "D": [1.3, 2.2],
+        "E": [0.5, 1.2],
+        "D": [1.2, 2.3],
         "C": [2.3, 3.4],
-        "B": [3.5, 8.9],
+        "B": [3.4, 9],
         "A": [9, 10]
     });
 
@@ -72,7 +72,7 @@ function Report() {
                 ...scores,
                 ...(sslReport?.results.checkSSLExpiry.valid ? [10] : [0])
             ]);
-            // console.log(scores, label, score);
+            console.log(scores, label, score);
             setLabel(label);
             setScore(score);
             console.log(
