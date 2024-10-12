@@ -9,7 +9,7 @@ type MainLayoutProps = {
 
 export default function MainLayout({children}: MainLayoutProps) {
     return (
-        <main className="flex min-h-svh flex-col items-center justify-between p-5 lg:p-24">
+        <main className="dark flex min-h-svh flex-col items-center justify-between p-5 lg:p-24">
             <Transition>
                 {children}
             </Transition>

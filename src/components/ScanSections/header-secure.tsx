@@ -73,7 +73,7 @@ function HeaderSecure() {
                 <div>
                     <div className={"border-b dark:border-zinc-800 border-zinc-200"}>
                         <div className={"py-3 px-4 flex items-center"}>
-                            <span className={"text-lg  font-semibold"}>Trạng thái phản hồi của trang web</span>
+                            <span className={"text-lg  font-semibold hover:underline hover:text-zinc-100 cursor-pointer"}>Trạng thái phản hồi của trang web</span>
                             <span></span>
                         </div>
                         <div >
@@ -82,7 +82,7 @@ function HeaderSecure() {
                     </div>
                     <div>
                         <div className={"py-3 px-4"}>
-                            <span className={"text-lg font-semibold"}>Header phản hồi</span>
+                            <span className={"text-lg font-semibold hover:underline hover:text-zinc-100 cursor-pointer"}>Header phản hồi</span>
                         </div>
                         <div className={""}>
                             {headers?.headers ? (
@@ -112,13 +112,13 @@ function HeaderSecure() {
                 <div>
                     {headers?.headers
                         ? (<Accordion type="single" collapsible className="w-full p-4">
-                        {headerCheck?.responseResults && Object.keys(headerCheck?.responseResults).map((header, index) => (
+                        {headerCheck?.headerChecks && Object.keys(headerCheck?.headerChecks).map((header, index) => (
                             <AccordionItem key={genID()} value={header} className={"border-zinc-800 w-5xl"}>
                                 <AccordionTrigger className={"capitalize font-semibold hover:no-underline"}>
                                     <Status
                                         status={
                                             statusHeaderCheckedBinding[
-                                                headerCheck.responseResults?.[header as ResponseHeaders].status
+                                                headerCheck.headerChecks?.[header as ResponseHeaders].status
                                                 ] as StatusProps['status'] || "info"
                                         }
                                         className={"hover:bg-opacity-30 transition-colors gap-1 [&>span]:pr-1"}
@@ -127,7 +127,7 @@ function HeaderSecure() {
                                     </Status>
                                 </AccordionTrigger>
                                 <AccordionContent className={"pl-4 font-medium text-zinc-700 dark:text-zinc-100"}>
-                                    {headerCheck.responseResults?.[header as ResponseHeaders].message || 'Not Found'}
+                                    {headerCheck.headerChecks?.[header as ResponseHeaders].message || 'Not Found'}
                                 </AccordionContent>
                             </AccordionItem>
                         ))}

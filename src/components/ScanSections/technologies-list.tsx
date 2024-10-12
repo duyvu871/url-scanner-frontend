@@ -22,7 +22,7 @@ function TechnologiesList() {
 
     return (
         <div className={"flex flex-col bg-zinc-950 rounded-xl border border-zinc-700"}>
-           <div className={"w-full px-4 py-4 font-semibold uppercase border-b border-zinc-700"}>Công nghệ sử dụng</div>
+            <div className={"w-full px-4 py-4 font-semibold uppercase border-b border-zinc-700"}>Công nghệ sử dụng</div>
             <Accordion type="single" collapsible className="w-full p-4">
                 {!technologies && (
                     <RotateLoader />
@@ -34,12 +34,12 @@ function TechnologiesList() {
                     <AccordionItem key={genID()} value={technology.name} className={"border-zinc-800"}>
                         <AccordionTrigger className={"hover:no-underline"}>
                             <div className={"flex flex-col gap-2"}>
-                                <div className={"group flex flex-row gap-2"}>
+                                <div className={"group flex flex-row justify-start items-center gap-2"}>
                                     <Image className={"w-6 h-6"} width={50} height={50} unoptimized
                                            src={resolveIconPath(technology.icon)} alt={technology.name}/>
-                                    <div className={"flex justify-center items-center"}>
+                                    <div className={"flex flex-col justify-start items-start"}>
                                         <div className={"text-sm font-semibold group-hover:underline"}>{technology.name}</div>
-                                        <div className={"text-xs"}>{technology.version}</div>
+                                        <div className={"text-xs text-zinc-500"}>{technology.version}</div>
                                     </div>
                                 </div>
                                 <div className={"flex flex-wrap gap-1"}>

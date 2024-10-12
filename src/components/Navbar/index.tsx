@@ -8,6 +8,8 @@ import {GoServer} from "react-icons/go";
 import {AiOutlineScan} from "react-icons/ai";
 import {IoNewspaperOutline} from "react-icons/io5";
 import {usePathname} from "next/navigation";
+import {TbDatabaseSearch} from "react-icons/tb";
+import {BsDatabase} from "react-icons/bs";
 interface NavigationBarProps {
     placement?: "top" | "bottom";
 };
@@ -27,9 +29,9 @@ const navigateItems = [
                 icon: GoServer
             },
             {
-                name: "scan",
-                url: "/scans",
-                icon: AiOutlineScan ,
+                name: "database",
+                url: "/database/scan",
+                icon: BsDatabase   ,
             },
             {
                 name: "report",
@@ -60,7 +62,7 @@ function NavigationBar(props: NavigationBarProps) {
                                         <div
                                             className={cn(
                                                 "flex flex-col justify-center items-center gap-2 p-3 rounded-lg dark:bg-zinc-800 dark:hover:bg-zinc-700 hover:bg-zinc-700 transition-colors",
-                                                pathName.includes(name) && "dark:bg-zinc-700 after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:transform after:-translate-x-1/2 after:w-1.5 after:h-1.5 dark:after:bg-zinc-400 after:rounded-full"
+                                                ((name === 'home' && pathName === '/') || pathName.includes(name)) && "dark:bg-zinc-700 after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:transform after:-translate-x-1/2 after:w-1.5 after:h-1.5 dark:after:bg-zinc-400 after:rounded-full"
                                             )}>
                                             <Icon className={"h-5 w-5 dark:fill-zinc-100 fill-zinc-700 text-zinc-50"}/>
                                             {/*<span className={"text-xs font-bold dark:text-zinc-300 text-zinc-700"}>{name}</span>*/}

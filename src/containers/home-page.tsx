@@ -37,6 +37,10 @@ function HomePage() {
         if (!response?.clientId) {
             showError(`Failed to initiate scan, Reason: ${response?.error}`);
         } else {
+            const storedHistory = localStorage.getItem('scanHistory');
+            const history = storedHistory ? JSON.parse(storedHistory) : [];
+            history.push(response);
+            localStorage.setItem('scanHistory', JSON.stringify(history));
             router.push('/target/' + response?.clientId);
         }
     };

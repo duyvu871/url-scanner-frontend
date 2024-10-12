@@ -1,17 +1,27 @@
 import type { AxiosInstance, AxiosError, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 import {Wrappalyzer} from "src/types/services/wrappalyzer";
+import {CheckSSLResponse, GetDNSInfoResponse} from "src/types/services/api";
 
 // Interface to define the shape of the `api.v1` object
 // This improves code clarity and type checking
 interface ApiV1 {
     // ... Other methods for API v1 (products, ...)
-    initScan: (url: string, callback?: (error: AxiosError|null, data: any) => void) => Promise<{clientId?: string; error?: string} | undefined>;
-    getTechnologies: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void) => Promise<Wrappalyzer & {error?: string} | undefined>;
-    takeScreenshot: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void) => Promise<{path?: string;} & {error?: string} | undefined>;
-    abortDirBuster: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void) => Promise<{message?: string;} & { error?: string} | undefined>;
-    domainDirBuster: (clientId: string, callback?: (error: AxiosError|null, data: any) => void) => Promise<{clientId?: string;} & { error?: string} | undefined>;
-    getDNSInfo: (clientId: string, callback?: (error: AxiosError|null, data: any) => void) => Promise<{family: number, address: string} & { error?: string} | undefined>;
+    initScan: (url: string, callback?: (error: AxiosError|null, data: any) => void) => Promise<{
+        clientId?: string; url?: string; timestamp?: number; status?:string; error?: string
+    } | undefined>;
+    getTechnologies: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void)
+        => Promise<Wrappalyzer & {error?: string} | undefined>;
+    takeScreenshot: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void)
+        => Promise<{path?: string;} & {error?: string} | undefined>;
+    abortDirBuster: (clientId: string,  callback?: (error: AxiosError|null, data: any) => void)
+        => Promise<{message?: string;} & { error?: string} | undefined>;
+    domainDirBuster: (clientId: string, callback?: (error: AxiosError|null, data: any) => void)
+        => Promise<{clientId?: string;} & { error?: string} | undefined>;
+    getDNSInfo: (clientId: string, callback?: (error: AxiosError|null, data: any) => void)
+        => Promise<GetDNSInfoResponse & { error?: string} | undefined>;
+    getSSLInfo: (clientId: string, callback?: (error: AxiosError|null, data: any) => void)
+       => Promise<CheckSSLResponse & { error?: string} | undefined>;
 }
 
 // Fetch the API endpoint from environment variables
@@ -53,7 +63,9 @@ const apiTemplate = async <T>(
 // Define methods for API version 1
 api.v1 = {
     initScan: async (url, callback?: (error: AxiosError|null, data: any) => void) => {
-        const response = await apiTemplate<{clientId?: string} & { error?: string} | undefined>(
+        const response = await apiTemplate<
+            {clientId?: string; url?: string; timestamp?: number; status?:string; error?: string} | undefined
+        >(
             api,
             `/init-scan`,
             {
@@ -142,7 +154,7 @@ api.v1 = {
         return response?.data;
     },
     getDNSInfo: async (clientId, callback?: (error: AxiosError|null, data: any) => void) => {
-        const response = await apiTemplate<{family: number, address: string} & { error?: string} | undefined>(
+        const response = await apiTemplate<GetDNSInfoResponse & { error?: string} | undefined>(
             api,
             `/get-dns-info`,
             {
@@ -158,7 +170,25 @@ api.v1 = {
             callback
         );
         return response?.data;
-    }
+    },
+    getSSLInfo: async (clientId, callback?: (error: AxiosError|null, data: any) => void) => {
+        const response = await apiTemplate<CheckSSLResponse & { error?: string} | undefined>(
+            api,
+            `/check-ssl`,
+            {
+                clientId
+            },
+            { method: 'post',
+                configs: {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                },
+            },
+            callback
+        );
+        return response?.data;
+    },
 };
 
 export default api;

@@ -1,16 +1,16 @@
 
 const scoreLabel = {
     "F": {
-        "message": "Website của bạn có rất nhiều lỗ hổng bảo mật nghiêm trọng. Rủi ro bị tấn công và mất dữ liệu là cực kỳ cao. Cần hành động ngay lập tức để khắc phục các lỗ hổng này. Vui lòng liên hệ với chuyên gia bảo mật để được hỗ trợ.",
-        "label": "Cực kỳ nguy hiểm"
+        "message": "Website của bạn có rất nhiều lỗ hổng bảo mật nghiêm trọng. Rủi ro bị tấn công và mất dữ liệu là cực rất cao. Cần hành động ngay lập tức để khắc phục các lỗ hổng này. Vui lòng liên hệ với chuyên gia bảo mật để được hỗ trợ.",
+        "label": "Nguy hiểm"
     },
     "E": {
-        "message": "Website của bạn có nhiều lỗ hổng bảo mật nghiêm trọng.  Rủi ro bị tấn công là rất cao.  Cần khắc phục ngay các lỗ hổng này để bảo vệ website và dữ liệu của bạn.",
-        "label": "Rất nguy hiểm"
+        "message": "Website của bạn có nhiều lỗ hổng bảo mật nghiêm trọng.  Rủi ro bị tấn công là tương đối cao.  Cần khắc phục ngay các lỗ hổng này để bảo vệ website và dữ liệu của bạn.",
+        "label": "Tiềm ẩn nguy hiểm"
     },
     "D": {
-        "message": "Website của bạn có một số lỗ hổng bảo mật. Rủi ro bị tấn công là cao. Bạn nên xem xét và khắc phục các lỗ hổng này để tăng cường bảo mật cho website.",
-        "label": "Nguy hiểm"
+        "message": "Website của bạn có một số lỗ hổng bảo mật. Rủi ro bị tấn công ở mức độ trung bình. Bạn nên xem xét và khắc phục các lỗ hổng này để tăng cường bảo mật cho website.",
+        "label": "Tiềm ẩn rủi ro"
     },
     "C": {
         "message": "Website của bạn có một số điểm yếu bảo mật.  Bạn nên cải thiện các điểm yếu này để giảm thiểu rủi ro bị tấn công.",

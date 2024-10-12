@@ -36,7 +36,7 @@ function Screenshot() {
         <div className={"flex flex-col bg-zinc-950 rounded-xl border border-zinc-700 overflow-hidden"}>
             <div className={"flex justify-between px-4 py-4 w-full border-b border-zinc-700"}>
                 <div className={"flex flex-col gap-2"}>
-                    <div className={"w-full font-semibold uppercase"}>Ảnh xem trước của trang web</div>
+                    <div className={"w-full font-semibold uppercase"}>Ảnh xem trước</div>
                     <div className={"flex justify-start items-center gap-2"}>
                         <span className={"text-sm text-zinc-600 dark:text-zinc-200"}>Trang web: </span>
                         <Link href={clientStatus?.url || '/'} passHref>
@@ -50,7 +50,7 @@ function Screenshot() {
                     </div>
                 </div>
             </div>
-            <div className={""}>
+            <div className={"relative flex justify-center items-center"}>
                 {!screenshot?.path && <RotateLoader/>}
                 {image && (
                     <Image unoptimized loading={'lazy'} width={1200} height={1400} src={image} alt={"Screenshot"}/>)}
