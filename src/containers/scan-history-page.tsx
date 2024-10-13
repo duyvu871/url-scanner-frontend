@@ -7,7 +7,7 @@ import {IoIosArrowForward} from "react-icons/io";
 import Link from "next/link";
 moment.locale('vi');
 
-export function ScanHistoryPage() {
+export function ScanHistoryPage({type, title}: { type: string;title: string }) {
     const [scanHistory, setScanHistory] = React.useState<{ url: string, status: string, clientId: string, timestamp: number}[]>([]);
 
     useEffect(() => {
@@ -20,12 +20,12 @@ export function ScanHistoryPage() {
         <div className={"w-full h-full flex flex-col gap-10 pb-24 overflow-hidden"}>
             <div className={'w-full flex flex-col gap-5'}>
                  <span className="flex flex-col gap-2">
-                    <p className={"text-3xl font-semibold"}>Lịch sử quét lỗ hổng</p>
+                    <p className={"text-3xl font-semibold"}>{title}</p>
                     <p className={"text-xl text-zinc-400"}>
                     </p>
                 </span>
             </div>
-            <div className={"flex flex-col"}>
+            <div className={"flex flex-col gap-5"}>
                 {scanHistory.length === 0 && (
                     <div>Không có lịch sử quét</div>
                 )}
@@ -49,7 +49,7 @@ export function ScanHistoryPage() {
                             </div>
                         </div>
                         <div className={"flex align-middle"}>
-                            <Link href={`/target/${scan.clientId}`} passHref>
+                            <Link href={`/${type}/${scan.clientId}`} passHref>
                                 <div
                                     className={"w-8 h-8 flex justify-center items-center rounded-lg bg-zin-900 cursor-pointer hover:bg-zinc-700 transition-colors"}>
                                     <IoIosArrowForward className={"text-sm md:text-lg"}/>

@@ -33,11 +33,11 @@ const navigateItems = [
                 url: "/database/scan",
                 icon: BsDatabase   ,
             },
-            {
-                name: "report",
-                url: "/report",
-                icon: IoNewspaperOutline,
-            }
+            // {
+            //     name: "report",
+            //     url: "/report",
+            //     icon: IoNewspaperOutline,
+            // }
         ]
     },
 ]

@@ -33,7 +33,7 @@ function HomePage() {
         //     showError(response.error);
         // }
         // localStorage.setItem('clientId', response?.clientId || '');
-        // console.log(response);
+        // console.logs(response);
         if (!response?.clientId) {
             showError(`Failed to initiate scan, Reason: ${response?.error}`);
         } else {

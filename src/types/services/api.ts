@@ -105,3 +105,26 @@ export interface SSLValidity {
     start: number
     end: number
 }
+
+export interface ScanProgress {
+    task: string,
+    time: string,
+    percent: string,
+    remaining: string
+    etc: string
+}
+
+export interface ScanResult {
+    result: {
+        hostname: string,
+        ip: string,
+        mac: string|null,
+        openPorts: {
+            method?: string,
+            port?: number,
+            protocol?: string,
+            service?: string,
+        }[],
+        osNmap: string|null,
+    }[]
+}

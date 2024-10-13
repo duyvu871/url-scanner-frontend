@@ -51,23 +51,23 @@ function TargetPage({clientId}: TargetPageProps) {
                     const sslReport = await axios.v1.getSSLInfo(clientId);
                     if (sslReport && !sslReport?.error) {
                         setSSLReport(sslReport);
-                        // console.log(sslReport);
+                        // console.logs(sslReport);
                     }
                     const dnsInfo = await axios.v1.getDNSInfo(clientId);
                     if (dnsInfo && !dnsInfo?.error) {
                         setDNSInfo(dnsInfo);
-                        // console.log(dnsInfo);
+                        // console.logs(dnsInfo);
                     }
                     const technologies = await axios.v1.getTechnologies(clientId);
                     if (technologies && !technologies?.error) {
                         setTechnologies(technologies);
-                        // console.log(technologies);
+                        // console.logs(technologies);
                     }
                     const screenshot = await axios.v1.takeScreenshot(clientId);
                     const screenshotPath = screenshot?.path;
                     if (screenshotPath && !screenshot?.error) {
                         setScreenshot({path: screenshotPath});
-                        // console.log(screenshotPath);
+                        // console.logs(screenshotPath);
                     }
                 })();
             });

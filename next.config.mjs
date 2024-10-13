@@ -35,6 +35,10 @@ const nextConfig = {
             {
                 source: '/storages/:path*',
                 destination: process.env.NODE_ENV === "development" ? 'http://localhost:4000/storages/:path*' : 'http://14.224.188.206:4000/storages/:path*',//'http://14.224.188.206:4000/storages/:path*'
+            },
+            {
+                source: '/socket/:path*',
+                destination: process.env.NODE_ENV === "development" ? 'http://localhost:4000/socket/:path*' : 'http://14.224.188.206:4000/socket/:path*',//'http://14.224.188.206:4000/storages/:path*'
             }
         ];
     },

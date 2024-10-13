@@ -1,6 +1,5 @@
-// @flow
 import * as React from 'react';
-import {DatabaseScanTargetPage} from "src/containers/database-scan-target-page";
+import {NmapScanner} from "src/containers/database-scan/nmap-scanner";
 
 type Props = {
     params: {
@@ -10,6 +9,6 @@ type Props = {
 
 export default function Page(props: Props) {
     return (
-       <DatabaseScanTargetPage clientId={props.params.clientId} />
+       <NmapScanner clientId={props.params.clientId}/>
     );
 };

@@ -80,7 +80,7 @@ api.v1 = {
             },
             callback
         );
-        // console.log(response);
+        // console.logs(response);
         return response?.data;
     },
     getTechnologies: async (clientId, callback?: (error: AxiosError|null, data: any) => void) => {
