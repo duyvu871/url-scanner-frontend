@@ -10,6 +10,7 @@ import {IoNewspaperOutline} from "react-icons/io5";
 import {usePathname} from "next/navigation";
 import {TbDatabaseSearch} from "react-icons/tb";
 import {BsDatabase} from "react-icons/bs";
+import {SiMysql} from "react-icons/si";
 interface NavigationBarProps {
     placement?: "top" | "bottom";
 };
@@ -33,11 +34,11 @@ const navigateItems = [
                 url: "/database/scan",
                 icon: BsDatabase   ,
             },
-            // {
-            //     name: "report",
-            //     url: "/report",
-            //     icon: IoNewspaperOutline,
-            // }
+            {
+                name: "sql",
+                url: "/sql",
+                icon: SiMysql ,
+            }
         ]
     },
 ]

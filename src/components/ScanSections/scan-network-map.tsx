@@ -55,6 +55,7 @@ export function ScanNetworkMap() {
                 console.error('Lỗi kết nối Socket.IO:', error);
             });
             ioRef.current.on('complete', (data: ScanResult['result']) => {
+
                 setScanCompleteResult({
                     result: data
                 });
@@ -73,6 +74,21 @@ export function ScanNetworkMap() {
             }
         }
     }, []);
+
+    useEffect(() => {
+        if (scanCompleteResult) {
+            const latestContent = content[content.length - 1];
+            if (latestContent && parseInt(latestContent.percent) < 100) {
+                appendContent({
+                    task: 'Hoàn thành',
+                    percent: "100",
+                    remaining: "0",
+                    time: "0",
+                    etc: String(new Date())
+                });
+            }
+        }
+    }, [scanCompleteResult, content]);
 
     return (
         <div className={"w-full flex justify-center"}>

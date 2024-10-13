@@ -5,18 +5,18 @@ import useUID from "src/hooks/useUID";
 import Image from "next/image";
 
 const services = [
-    {
-        id: '1',
-        name: 'Scan lỗ hổng SQL Injection',
-        description: 'Scan lỗ hổng SQL Injection trên cơ sở dữ liệu',
-        href: 'sql',
-        icon: {
-            src: '/mysql.png',
-            alt: 'MySQL',
-            width: 64,
-            height: 64
-        }
-    },
+    // {
+    //     id: '1',
+    //     name: 'Scan lỗ hổng SQL Injection',
+    //     description: 'Scan lỗ hổng SQL Injection trên cơ sở dữ liệu',
+    //     href: 'sql',
+    //     icon: {
+    //         src: '/mysql.png',
+    //         alt: 'MySQL',
+    //         width: 64,
+    //         height: 64
+    //     }
+    // },
     {
         id: '2',
         name: 'Scan bản đồ mạng',
