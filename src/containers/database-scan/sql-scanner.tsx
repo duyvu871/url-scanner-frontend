@@ -65,7 +65,7 @@ export function SqlScanner({clientId}: {clientId: string}) {
     }
 
     useEffect(() => {
-        if (isMounted.current) {
+        // if (isMounted.current) {
             ioRef.current = io(process.env.NEXT_PUBLIC_API_BASE_URL, {
                 transports: ["websocket"], // use websocket only
                 addTrailingSlash: false, // remove trailing slash
@@ -94,7 +94,7 @@ export function SqlScanner({clientId}: {clientId: string}) {
                 appendContent(progress);
                 console.log('progress:', progress);
             });
-        }
+        // }
         isMounted.current = true;
 
         return () => {
