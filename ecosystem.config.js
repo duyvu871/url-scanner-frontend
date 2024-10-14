@@ -3,8 +3,8 @@ module.exports = {
         {
             name: 'connected-brain-front-end-url-scanner',
             script: 'src/server.js',
-            out_file: "./back-end-out.logs",
-            error_file: "./back-end-error.logs",
+            out_file: "./front-end-out.logs",
+            error_file: "./front-end-error.logs",
             log_date_format: "DD-MM HH:mm:ss Z",
             env: {
                 NODE_ENV: 'development',
